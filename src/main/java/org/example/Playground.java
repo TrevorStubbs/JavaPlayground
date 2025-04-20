@@ -12,6 +12,9 @@ public class Playground {
         map.merge(1, 1, Integer::sum);
         Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
 
+
+
+
         // indexOf gets the first index of the substring
 
         System.out.println(thing.indexOf("ell"));
