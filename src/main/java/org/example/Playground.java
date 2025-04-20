@@ -12,6 +12,8 @@ public class Playground {
         map.merge(1, 1, Integer::sum);
         Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
 
+//        map.values()
+
 
 
 
