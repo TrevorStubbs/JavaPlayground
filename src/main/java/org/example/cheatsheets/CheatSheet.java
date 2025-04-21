@@ -1,10 +1,6 @@
 package org.example.cheatsheets;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CheatSheet {
     // 2 pointer 1 input opposite ends
@@ -225,6 +221,23 @@ public class CheatSheet {
     }
 
     // monotonic increasing stack
+    public static int monotonicIncreasingStack(int[] array) {
+        Stack<Integer> stack = new Stack<>();
+        int answer = 0;
+
+        for (int num: array) {
+            // for monotonic decreasing, just glip the > to <
+            while (!stack.empty() && stack.peek() > num) {
+                // do logic
+                stack.pop();
+            }
+
+            stack.push(num);
+        }
+
+        return answer;
+    }
+
     // Binary tree: depth first (recursive)
     // Binary tree: depth first (iterative)
     // Binary tree: breadth first

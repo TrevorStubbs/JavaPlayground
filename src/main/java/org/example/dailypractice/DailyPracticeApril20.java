@@ -1,23 +1,21 @@
 package org.example.dailypractice;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class DailyPracticeApril20 {
     // binarySearch
     public static boolean binarySearch(int[] array, int key) {
         int left = 0;
-        int right = array.length -1;
+        int right = array.length - 1;
 
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if(key == array[mid]) {
+            if (key == array[mid]) {
                 return true;
             }
 
-            if(key < array[mid]) {
+            if (key < array[mid]) {
                 right = mid - 1;
             } else {
                 left = mid + 1;
@@ -32,10 +30,10 @@ public class DailyPracticeApril20 {
         int left = 0;
         int right = array.length - 1;
 
-        while(left < right) {
+        while (left < right) {
             int sum = array[left] + array[right];
 
-            if(sum == target) {
+            if (sum == target) {
                 return true;
             } else if (sum < target) {
                 left++;
@@ -56,21 +54,21 @@ public class DailyPracticeApril20 {
         int left = 0;
         int right = array2.length - 1;
 
-        while(left < array1.length && right >= 0) {
-            if(Math.abs(array1[left] + array2[right] - key) < difference) {
+        while (left < array1.length && right >= 0) {
+            if (Math.abs(array1[left] + array2[right] - key) < difference) {
                 resultLeft = left;
                 resultRight = right;
                 difference = Math.abs(array1[left] + array2[right] - 1);
             }
 
-            if(array1[left] + array2[right] > key) {
+            if (array1[left] + array2[right] > key) {
                 right--;
             } else {
                 left++;
             }
         }
 
-        return new int[] {array1[resultLeft], array2[resultRight]};
+        return new int[]{array1[resultLeft], array2[resultRight]};
     }
 
     // slidingWindow
@@ -98,7 +96,7 @@ public class DailyPracticeApril20 {
     // prefix
     public static int[] prefixSum(int[] array) {
         int[] prefix = new int[array.length];
-        Arrays.fill(prefix,0);
+        Arrays.fill(prefix, 0);
         prefix[0] = array[0];
 
         for (int i = 1; i < array.length; i++) {
@@ -113,7 +111,7 @@ public class DailyPracticeApril20 {
         Arrays.fill(suffix, 0);
         suffix[suffix.length - 1] = array[array.length - 1];
 
-        for (int i = array.length - 2; i>= 0; i--) {
+        for (int i = array.length - 2; i >= 0; i--) {
             suffix[i] = suffix[i + 1] + suffix[i];
         }
 
@@ -138,8 +136,8 @@ public class DailyPracticeApril20 {
         ListNode fast = head;
         ListNode slow = head;
 
-        while (fast != null && slow != null ) {
-            if(slow.value == fast.value) {
+        while (fast != null && slow != null) {
+            if (slow.value == fast.value) {
                 return true;
             }
 
@@ -155,7 +153,7 @@ public class DailyPracticeApril20 {
         ListNode current = head;
         ListNode prev = null;
 
-        while(current != null) {
+        while (current != null) {
             ListNode nextNode = current.next;
             current.next = prev;
             prev = current;
@@ -166,6 +164,19 @@ public class DailyPracticeApril20 {
     }
 
     // findSubArrays
+    public static int findSubArray(int[] array, int k) {
+        Map<Integer, Integer> counts = new HashMap<>();
+        counts.put(0, 1);
+        int answer = 0;
+        int current = 0;
+
+        for (int num : array) {
+            answer += counts.getOrDefault(current - k, 0);
+            counts.put(current, counts.getOrDefault(current, 0) + 1);
+        }
+
+        return answer;
+    }
 
     public static class ListNode {
         int value;
