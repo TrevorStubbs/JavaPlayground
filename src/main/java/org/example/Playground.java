@@ -14,7 +14,7 @@ public class Playground {
 
 //        map.values()
 
-
+        var things = Integer.compare(2, 5);
 
 
         // indexOf gets the first index of the substring

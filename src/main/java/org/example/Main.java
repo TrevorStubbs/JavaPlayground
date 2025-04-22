@@ -13,9 +13,8 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        var thing = DailyPracticeApril20.printClosest(new int[] {1,2,3,4}, new int[] {5, 6, 7, 8, 9}, 7);
+        var thing = Math.floorDiv(2, 2);
 
-        // test commit
-        System.out.println(Arrays.toString(thing));
+        System.out.println(thing);
     }
 }

@@ -10,6 +10,7 @@ public class DailyPracticeTemplate {
     // fastSlowPointer
     // reverseLinkedList
     // findSubArrays
+    // monotonic increasing stack
 
     public static class ListNode {
         int value;
