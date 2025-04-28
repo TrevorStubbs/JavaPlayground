@@ -1,20 +1,25 @@
 package org.example;
 
-import org.example.dailypractice.DailyPracticeApril20;
-import org.example.geeksforgeeks.hashing.ContainsDisjoint;
-import org.example.geeksforgeeks.hashing.SubsetOfAnotherArray;
-import org.example.geeksforgeeks.sortingalgorithms.BubbleSort;
+import org.example.geeksforgeeks.twopointer.SortedSquares;
+import org.example.learning.MonotonicStacks;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        var thing = Math.floorDiv(2, 2);
+        var Flower = "Flower";
+        var Flow = "Flow";
+
+        Character c = 'c';
+        Stack<Character > stack = new Stack<>();
+        stack.push('c');
+
+        var thing = c.equals('c');
+
+        var prefix = Flower.indexOf("owe");
 
         System.out.println(thing);
     }
+
 }

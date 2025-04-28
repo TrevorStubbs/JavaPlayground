@@ -1,4 +1,4 @@
-package org.example.geeksforgeeks;
+package org.example.geeksforgeeks.twopointer;
 
 public class BinarySearch {
     public static boolean binarySearch(int[] inputArray, int key) {

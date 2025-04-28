@@ -1,5 +1,7 @@
 package org.example.dailypractice;
 
+import org.example.ListNode;
+
 import java.util.List;
 
 public class DailyPracticeApril18 {
@@ -171,10 +173,5 @@ public class DailyPracticeApril18 {
         }
 
         return prev;
-    }
-
-    public static class ListNode {
-        int value;
-        ListNode next;
     }
 }

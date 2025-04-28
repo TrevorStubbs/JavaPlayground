@@ -1,5 +1,9 @@
 package org.example.cheatsheets;
 
+import org.example.ListNode;
+import org.example.TreeBuilder;
+import org.example.TreeNode;
+
 import java.util.*;
 
 public class CheatSheet {
@@ -225,8 +229,8 @@ public class CheatSheet {
         Stack<Integer> stack = new Stack<>();
         int answer = 0;
 
-        for (int num: array) {
-            // for monotonic decreasing, just glip the > to <
+        for (int num : array) {
+            // for monotonic decreasing, just flip the > to <
             while (!stack.empty() && stack.peek() > num) {
                 // do logic
                 stack.pop();
@@ -239,8 +243,66 @@ public class CheatSheet {
     }
 
     // Binary tree: depth first (recursive)
+    public static int binaryTreeDsfRec(TreeNode root) {
+        if (root == null) { // base case
+            return 0;
+        }
+
+        int answer = 0;
+        // do logic
+
+        binaryTreeDsfRec(root.left);
+        binaryTreeDsfRec(root.right);
+
+        return answer;
+    }
+
     // Binary tree: depth first (iterative)
+    public static int binaryTreeDsfIter(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        int answer = 0;
+
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            // do logic
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+
+        return answer;
+    }
+
     // Binary tree: breadth first
+    public static int binaryTreeBsf(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int answer = 0;
+
+        while (!queue.isEmpty()) {
+            int currentLength = queue.size();
+            // do logic for current level
+            for (int i = 0; i < currentLength; i++) {
+                TreeNode currentNode = queue.remove();
+                // do logic
+                if (currentNode.left != null) {
+                    queue.add(currentNode.left);
+                }
+
+                if (currentNode.right != null) {
+                    queue.add(currentNode.right);
+                }
+            }
+        }
+
+        return answer;
+    }
+
     // Graph: Depth first (recursive)
     // Graph: Depth first (iterative)
     // Graph: Breadth first
@@ -253,9 +315,4 @@ public class CheatSheet {
     // Dynamic programming: top-down memoization
     // Build a trie
     // Dijkstra's Algorithm
-
-    public static class ListNode {
-        int value;
-        ListNode next;
-    }
 }

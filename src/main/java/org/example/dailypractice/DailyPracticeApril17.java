@@ -1,5 +1,7 @@
 package org.example.dailypractice;
 
+import org.example.ListNode;
+
 public class DailyPracticeApril17 {
     public static boolean binarySearch(int[] array, int key) {
         int left = 0;
@@ -139,10 +141,5 @@ public class DailyPracticeApril17 {
         }
 
         return prev;
-    }
-
-    public static class ListNode {
-        int value;
-        ListNode next;
     }
 }

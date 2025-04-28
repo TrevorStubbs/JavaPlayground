@@ -6,14 +6,13 @@ public class DailyPracticeTemplate {
     // twoPointerTwoInput
     // slidingWindow
     // prefix
+    // suffix
     // prefixString
     // fastSlowPointer
     // reverseLinkedList
     // findSubArrays
     // monotonic increasing stack
-
-    public static class ListNode {
-        int value;
-        ListNode next;
-    }
+    // binaryTreeDfs(recursive)
+    // binaryTreeDfs(iterative)
+    // binaryTreeBfs
 }
