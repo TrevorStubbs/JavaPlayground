@@ -1,4 +1,4 @@
-package org.example.leetcode;
+package org.example.leetcode.binarysearch;
 
 public class FirstBadVersion {
     public static int firstBadVersion(int n) {
