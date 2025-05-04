@@ -1,16 +1,14 @@
-package org.example;
-
-import org.example.dailypractice.DailyPracticeApril22;
+package org.example.learning.tree;
 
 public class TreeBuilder {
     public static TreeNode buildTree() {
-        TreeNode root = new TreeNode();
-        TreeNode left = new TreeNode();
-        TreeNode leftLeft = new TreeNode();
-        TreeNode leftRight = new TreeNode();
-        TreeNode right = new TreeNode();
-        TreeNode rightLeft = new TreeNode();
-        TreeNode rightRight = new TreeNode();
+        TreeNode root = new TreeNode(1);
+        TreeNode left = new TreeNode(2);
+        TreeNode leftLeft = new TreeNode(3);
+        TreeNode leftRight = new TreeNode(4);
+        TreeNode right = new TreeNode(5);
+        TreeNode rightLeft = new TreeNode(6);
+        TreeNode rightRight = new TreeNode(7);
 
         root.value = 1;
         root.left = left;

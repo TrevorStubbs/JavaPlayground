@@ -1,8 +1,7 @@
 package org.example.cheatsheets;
 
 import org.example.ListNode;
-import org.example.TreeBuilder;
-import org.example.TreeNode;
+import org.example.learning.tree.TreeNode;
 
 import java.util.*;
 

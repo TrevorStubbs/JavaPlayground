@@ -1,7 +1,5 @@
 package org.example.learning;
 
-import org.example.TreeNode;
-
 import java.util.Stack;
 
 public class MonotonicStacks {

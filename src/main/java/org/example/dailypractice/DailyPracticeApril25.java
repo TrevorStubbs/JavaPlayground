@@ -1,7 +1,7 @@
 package org.example.dailypractice;
 
 import org.example.ListNode;
-import org.example.TreeNode;
+import org.example.learning.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;

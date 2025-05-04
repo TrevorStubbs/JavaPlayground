@@ -4,29 +4,26 @@ import org.example.ListNode;
 import org.example.learning.tree.TreeNode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-public class DailyPracticeApril27 {
+public class DailyPracticeMay02 {
     // binarySearch
     public static boolean binarySearch(int[] array, int key) {
         int left = 0;
         int right = array.length - 1;
-
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if (key == array[mid]) {
+            if (key == array[mid])
                 return true;
-            }
 
             if (key < array[mid]) {
                 right = mid - 1;
             } else {
-                left++;
+                left = mid + 1;
             }
         }
 
@@ -34,29 +31,29 @@ public class DailyPracticeApril27 {
     }
 
     // twoPointerOneInput
-    public static boolean twoPointer(int[] array, int key) {
+    public static boolean twoPointer1(int[] array, int key) {
         int left = 0;
         int right = array.length - 1;
-        int sum = 0;
 
         while (left <= right) {
-            sum = array[left] + array[right];
-            if (sum == key) {
+            int sum = array[left] + array[right];
+
+            if (key == sum) {
                 return true;
             }
 
-            if (sum < key) {
-                left++;
-            } else {
+            if (key < sum) {
                 right--;
+            } else {
+                left++;
             }
         }
 
-        return false;
+        return true;
     }
 
     // twoPointerTwoInput
-    public static int[] twoPointer2Array(int[] array1, int[] array2) {
+    public static int[] twoPointer2(int[] array1, int[] array2) {
         List<Integer> list = new ArrayList<>();
         int index1 = 0;
         int index2 = 0;
@@ -81,12 +78,6 @@ public class DailyPracticeApril27 {
             index2++;
         }
 
-//        int[] output = new int[list.size()];
-
-//        for(int i = 0; i < list.size(); i++){
-//            output[i] = list.get(i);
-//        }
-
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
@@ -103,7 +94,7 @@ public class DailyPracticeApril27 {
         int left = 0;
 
         for (int i = windowSize; i < array.length; i++) {
-            counter = counter - array[left] + array[i];
+            counter = counter - list.get(left) + array[i];
             list.add(counter);
             left++;
         }
@@ -112,40 +103,36 @@ public class DailyPracticeApril27 {
     }
 
     // prefix
-    public static int[] prefixSum(int[] array) {
-        int[] output = new int[array.length];
-        Arrays.fill(output, 0);
-
-        output[0] = array[0];
+    public static int[] prefix(int[] array) {
+        List<Integer> list = new ArrayList<>();
+        list.add(array[0]);
 
         for (int i = 1; i < array.length; i++) {
-            output[i] = output[i - 1] + array[i];
+            list.add(list.get(i - 1) + array[i]);
         }
 
-        return output;
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 
     // suffix
-    public static int[] suffixSum(int[] array) {
-        int[] output = new int[array.length];
-        Arrays.fill(output, 0);
+    public static int[] suffix(int[] array) {
+        int[] suffix = new int[array.length];
+        suffix[suffix.length - 1] = array[array.length - 1];
 
-        output[array.length - 1] = array[array.length - 1];
-
-        for (int i = array.length - 2; i >= 0; i++) {
-            output[i] = output[i + 1] + array[i];
+        for (int i = array.length - 2; i >= 0; i--) {
+            suffix[i] = suffix[i + 1] + array[i];
         }
 
-        return output;
+        return suffix;
     }
 
     // prefixString
     public static String prefixString(String[] strings) {
         String prefix = strings[0];
 
-        for(String string : strings) {
-            while(string.indexOf(prefix) != 0){
-                prefix = prefix.substring(0, prefix.length() -1);
+        for (String string : strings) {
+            while (string.indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
             }
         }
 
@@ -157,8 +144,8 @@ public class DailyPracticeApril27 {
         ListNode slow = head;
         ListNode fast = head.next;
 
-        while(slow != null && fast != null){
-            if(slow.value == fast.value) {
+        while (slow != null && fast != null) {
+            if (fast == slow) {
                 return true;
             }
 
@@ -172,55 +159,50 @@ public class DailyPracticeApril27 {
     // reverseLinkedList
     public static ListNode reverse(ListNode head) {
         ListNode current = head;
-        ListNode  prev = null;
+        ListNode prev = null;
 
-        while(current != null){
+        while (current != null) {
             ListNode nextNode = current.next;
             current.next = prev;
-            prev=current;
+            prev = current;
             current = nextNode;
         }
 
         return prev;
     }
 
-    // findSubArrays
-    // monotonic increasing stack
-
-
     // binaryTreeDfs(recursive)
-    public static boolean dsfRec(TreeNode root, int key) {
-        if(root == null) {
+    public static boolean dsf(TreeNode root, int key) {
+        if (root == null) {
             return false;
         }
 
-        if(root.value == key) {
+        if (root.value == key) {
             return true;
         }
 
-        return dsfRec(root.left, key) || dsfRec(root.right, key);
+        return dsf(root.left, key) || dsf(root.right, key);
     }
 
     // binaryTreeDfs(iterative)
-    public boolean dsfIterate(TreeNode root, int key) {
+    public static boolean dsfIterate(TreeNode root, int key) {
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             TreeNode current = stack.pop();
-            if(current.value == key) {
+            if (current.value == key) {
                 return true;
             }
 
-            if(current.left != null) {
+            if (current.left != null) {
                 stack.push(current.left);
             }
 
-            if(current.right !=null) {
+            if (current.right != null) {
                 stack.push(current.right);
             }
         }
-
         return false;
     }
 
@@ -229,20 +211,21 @@ public class DailyPracticeApril27 {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        while(!queue.isEmpty()) {
-            int currentLength = queue.size();
-            for(int i = 0; i < currentLength; i ++) {
+        while (!queue.isEmpty()) {
+            int currentLevel = queue.size();
+
+            for (int i = 0; i < currentLevel; i++) {
                 TreeNode current = queue.remove();
 
-                if(current.value == key) {
+                if (current.value == key) {
                     return true;
                 }
 
-                if(current.left != null){
+                if (current.left != null) {
                     queue.add(current.left);
                 }
 
-                if(current.right !=null){
+                if (current.right != null) {
                     queue.add(current.right);
                 }
             }

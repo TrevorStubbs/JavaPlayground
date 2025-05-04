@@ -1,25 +1,22 @@
 package org.example;
 
-import org.example.geeksforgeeks.twopointer.SortedSquares;
-import org.example.learning.MonotonicStacks;
-
-import java.util.Arrays;
-import java.util.Stack;
+import org.example.geeksforgeeks.binarysearchtree.BinarySearchTree;
+import org.example.learning.tree.TreeNode;
 
 public class Main {
     public static void main(String[] args) {
-        var Flower = "Flower";
-        var Flow = "Flow";
+        TreeNode root = null;
 
-        Character c = 'c';
-        Stack<Character > stack = new Stack<>();
-        stack.push('c');
+        root = BinarySearchTree.insert(root, 50);
+        root = BinarySearchTree.insert(root, 30);
+        root = BinarySearchTree.insert(root, 20);
+        root = BinarySearchTree.insert(root, 40);
+        root = BinarySearchTree.insert(root, 70);
+        root = BinarySearchTree.insert(root, 60);
+        root = BinarySearchTree.insert(root, 80);
 
-        var thing = c.equals('c');
 
-        var prefix = Flower.indexOf("owe");
-
-        System.out.println(thing);
+        BinarySearchTree.inOrder(root);
     }
 
 }

@@ -1,8 +1,7 @@
 package org.example.dailypractice;
 
 import org.example.ListNode;
-import org.example.TreeBuilder;
-import org.example.TreeNode;
+import org.example.learning.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-import java.util.TreeMap;
 
 public class DailyPracticeApril22 {
     // binarySearch
