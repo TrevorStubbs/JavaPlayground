@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TwoSumUnSorted {
-    public static int[] TowSumUnSorted(int[] input, int target) {
+    public static int[] TwoSumUnSorted(int[] input, int target) {
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < input.length; i++){

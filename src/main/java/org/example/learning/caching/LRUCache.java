@@ -6,44 +6,44 @@ import java.util.Map;
 
 public class LRUCache<K, V> {
     private final int capacity;
-    private final Map<K, V> keyMap;
-    private final LinkedList<K> usageOrder;
+    private final Map<K, V> cache;
+    private final LinkedList<K> keyUsageOrder;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        this.keyMap = new HashMap<>();
-        this.usageOrder = new LinkedList<>();
+        this.cache = new HashMap<>();
+        this.keyUsageOrder = new LinkedList<>();
     }
 
     public V get(K key) {
-        if (!keyMap.containsKey(key)) {
+        if (!cache.containsKey(key)) { // null check fo no key in cache
             return null;
         }
 
-        usageOrder.remove(key);
-        usageOrder.addFirst(key);
-        return keyMap.get(key);
+        keyUsageOrder.remove(key); // remove key from list
+        keyUsageOrder.addFirst(key); // add key to beginning of list
+        return cache.get(key); // return value from key
     }
 
     public void put(K key, V value) {
-        if (keyMap.containsKey(key)) {
-            usageOrder.remove(key);
-        } else if (keyMap.size() == capacity) {
-            K leastUsed = usageOrder.remove();
-            keyMap.remove(leastUsed);
+        if (cache.containsKey(key)) { // if key is already here
+            keyUsageOrder.remove(key); // follow get and remove the key
+        } else if (cache.size() == capacity) { // if cache is at capacity
+            K leastUsed = keyUsageOrder.remove(); // evict last item in list
+            cache.remove(leastUsed); // remove evicted item from map
         }
 
-        usageOrder.addFirst(key);
-        keyMap.put(key, value);
+        keyUsageOrder.addFirst(key); // add key to list
+        cache.put(key, value); // add key and value to map
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (K key : usageOrder) {
+        for (K key : keyUsageOrder) {
             sb.append(key).append("=");
-            sb.append(keyMap.get(key)).append(" ");
+            sb.append(cache.get(key)).append(" ");
         }
 
         return sb.toString();
